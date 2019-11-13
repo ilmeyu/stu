@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>stu</artifactId>
+        <groupId>com.ilem</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>stu-server</artifactId>
+
+    <properties>
+        <stu-api.version>0.0.1-SNAPSHOT</stu-api.version>
+        <student-center-api>0.0.1-SNAPSHOT</student-center-api>
+        <dubbo-starter.version>2.7.3</dubbo-starter.version>
+        <curator-recipes.version>4.2.0</curator-recipes.version>
+        <mapstruct.version>1.3.0.Final</mapstruct.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>${curator-recipes.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>${dubbo-starter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ilem</groupId>
+            <artifactId>stu-api</artifactId>
+            <version>${stu-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ilem</groupId>
+            <artifactId>center-api</artifactId>
+            <version>${student-center-api}</version>
+        </dependency>
+    </dependencies>
+</project>

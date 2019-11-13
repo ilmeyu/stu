@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>stu</artifactId>
+        <groupId>com.ilem</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <stu-server.version>0.0.1-SNAPSHOT</stu-server.version>
+        <stu-api.version>0.0.1-SNAPSHOT</stu-api.version>
+        <stu-controller.version>0.0.1-SNAPSHOT</stu-controller.version>
+        <spring-web.version>2.2.0.RELEASE</spring-web.version>
+    </properties>
+
+    <artifactId>stu-controller</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ilem</groupId>
+            <artifactId>stu-api</artifactId>
+            <version>${stu-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ilem</groupId>
+            <artifactId>stu-server</artifactId>
+            <version>${stu-server.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
