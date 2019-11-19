@@ -2,6 +2,7 @@ package com.ilem.service.impl;
 
 import com.ilem.converter.UserConverter;
 import com.ilem.domain.AuthUser;
+import com.ilem.dto.input.UserAddRestIn;
 import com.ilem.dto.input.UserListRestIn;
 import com.ilem.dto.input.user.AuthUserListRpcIn;
 import com.ilem.dto.output.UserRestOut;
@@ -43,5 +44,10 @@ public class UserServiceImpl implements UserService {
 		authUsers.forEach((e) -> userListRest.add(userConverter.userRpc2Rest(e)));
 
 		return userListRest;
+	}
+
+	@Override
+	public Boolean add(UserAddRestIn rest) {
+		return null;
 	}
 }

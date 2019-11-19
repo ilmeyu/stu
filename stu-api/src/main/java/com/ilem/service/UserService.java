@@ -1,5 +1,6 @@
 package com.ilem.service;
 
+import com.ilem.dto.input.UserAddRestIn;
 import com.ilem.dto.input.UserListRestIn;
 import com.ilem.dto.output.UserRestOut;
 
@@ -12,4 +13,6 @@ import java.util.List;
 public interface UserService {
 
 	List<UserRestOut> list(UserListRestIn rest);
+
+	Boolean add(UserAddRestIn rest);
 }

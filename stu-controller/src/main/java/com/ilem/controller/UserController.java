@@ -1,6 +1,7 @@
 package com.ilem.controller;
 
 import com.ilem.dto.RestResponse;
+import com.ilem.dto.input.UserAddRestIn;
 import com.ilem.dto.input.UserListRestIn;
 import com.ilem.dto.output.UserRestOut;
 import com.ilem.service.UserService;
@@ -28,5 +29,9 @@ public class UserController {
 	@PostMapping(value = "/list")
 	public RestResponse<List<UserRestOut>> list(@RequestBody UserListRestIn request) {
 		return RestResponse.ok(userService.list(request));
+	}
+
+	public RestResponse<Boolean> add(@RequestBody UserAddRestIn request) {
+		return RestResponse.ok(userService.add(request));
 	}
 }
