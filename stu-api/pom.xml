@@ -12,31 +12,27 @@
 
     <artifactId>stu-api</artifactId>
 
-    <properties>
-        <student-center-api>0.0.1-SNAPSHOT</student-center-api>
-        <springfox.version>2.9.2</springfox.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.ilem</groupId>
             <artifactId>center-api</artifactId>
-            <version>${student-center-api}</version>
         </dependency>
 
-        <!-- swagger -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox.version}</version>
         </dependency>
-
     </dependencies>
 
 </project>

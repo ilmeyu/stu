@@ -9,4 +9,4 @@ dubbo:
     name: dubbo
     port: 20880
   registry:
-    address: zookeeper://139.224.223.122:2181
+    address: zookeeper://106.15.179.204:2181
