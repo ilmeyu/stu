@@ -4,10 +4,12 @@ import com.ilem.converter.UserConverter;
 import com.ilem.domain.AuthUser;
 import com.ilem.dto.input.UserAddRestIn;
 import com.ilem.dto.input.UserListRestIn;
+import com.ilem.dto.input.user.AuthUserAddRpcIn;
 import com.ilem.dto.input.user.AuthUserListRpcIn;
 import com.ilem.dto.output.UserRestOut;
 import com.ilem.server.AuthUserService;
 import com.ilem.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,7 @@ import java.util.List;
  * @author yuwenkai
  * @date 2019/10/28 4:28 下午
  **/
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -48,6 +51,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Boolean add(UserAddRestIn rest) {
-		return null;
+		AuthUserAddRpcIn authUserAddRpcIn = userConverter.userAddRest2Rpc(rest);
+		AuthUser userRpcOut = authUserService.userAdd(authUserAddRpcIn);
+
+		if (null == userRpcOut) {
+			log.error("用户新增失败！");
+			throw new RuntimeException();
+		}
+
+		return Boolean.TRUE;
 	}
 }

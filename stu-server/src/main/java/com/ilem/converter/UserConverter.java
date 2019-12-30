@@ -1,7 +1,9 @@
 package com.ilem.converter;
 
 import com.ilem.domain.AuthUser;
+import com.ilem.dto.input.UserAddRestIn;
 import com.ilem.dto.input.UserListRestIn;
+import com.ilem.dto.input.user.AuthUserAddRpcIn;
 import com.ilem.dto.input.user.AuthUserListRpcIn;
 import com.ilem.dto.output.UserRestOut;
 import org.mapstruct.Mapper;
@@ -16,4 +18,6 @@ public interface UserConverter {
 	UserRestOut userRpc2Rest(AuthUser rpc);
 
 	AuthUserListRpcIn userListRest2Rpc(UserListRestIn rest);
+
+	AuthUserAddRpcIn userAddRest2Rpc(UserAddRestIn rest);
 }

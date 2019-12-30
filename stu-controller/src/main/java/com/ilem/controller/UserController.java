@@ -31,6 +31,8 @@ public class UserController {
 		return RestResponse.ok(userService.list(request));
 	}
 
+	@ApiOperation(value = "新增用户")
+	@PostMapping(value = "/add")
 	public RestResponse<Boolean> add(@RequestBody UserAddRestIn request) {
 		return RestResponse.ok(userService.add(request));
 	}
