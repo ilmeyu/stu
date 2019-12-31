@@ -1,7 +1,6 @@
 package com.ilem.dto.common;
 
 import com.ilem.exception.InvalidArgRestException;
-import com.sun.istack.internal.NotNull;
 
 /**
  * @Author ilem
@@ -12,7 +11,7 @@ public interface Input {
 
 	void doCheck();
 
-	default void check(@NotNull Boolean exp, String msg) {
+	default void check(Boolean exp, String msg) {
 		if (Boolean.FALSE == exp) {
 			throw new InvalidArgRestException(msg);
 		}
