@@ -1,6 +1,6 @@
 package com.ilem.controller;
 
-import com.ilem.dto.RestResponse;
+import com.ilem.dto.common.RestResponse;
 import com.ilem.dto.input.UserAddRestIn;
 import com.ilem.dto.input.UserListRestIn;
 import com.ilem.dto.output.UserRestOut;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @author yuwenkai
+ * @author ilme
  * @date 2019/10/28 5:03 下午
  **/
 @Api(value = "用户管理")
@@ -31,9 +31,9 @@ public class UserController {
 		return RestResponse.ok(userService.list(request));
 	}
 
-//	@ApiOperation(value = "新增用户")
-//	@PostMapping(value = "/add")
-//	public RestResponse<Boolean> add(@RequestBody UserAddRestIn request) {
-//		return RestResponse.ok(userService.add(request));
-//	}
+	@ApiOperation(value = "新增用户")
+	@PostMapping(value = "/add")
+	public RestResponse<Boolean> add(@RequestBody UserAddRestIn request) {
+		return RestResponse.ok(userService.add(request));
+	}
 }

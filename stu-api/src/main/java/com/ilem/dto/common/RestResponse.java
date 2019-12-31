@@ -1,4 +1,4 @@
-package com.ilem.dto;
+package com.ilem.dto.common;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 /**
- * @author yuwenkai
+ * @author ilme
  * @date 2019/10/29 11:51 上午
  **/
 @Setter
@@ -30,6 +30,13 @@ public class RestResponse<T> implements Serializable {
 			.setCode(0)
 			.setData(t)
 			.setMsg("Ok");
+	}
+
+	public static <T> RestResponse<T> fail(String msg) {
+		return
+				new RestResponse<T>()
+						.setCode(-1)
+						.setMsg(msg);
 	}
 
 }

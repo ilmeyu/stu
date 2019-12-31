@@ -1,6 +1,6 @@
 package com.ilem.dto.input;
 
-import com.ilem.dto.RestPageRequest;
+import com.ilem.dto.common.RestPageRequest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 /**
- * @author yuwenkai
+ * @author ilme
  * @date 2019/10/28 7:16 下午
  **/
 @Setter
@@ -25,4 +25,8 @@ public class UserListRestIn extends RestPageRequest {
 	@ApiModelProperty(value = "状态")
 	private String status;
 
+	@Override
+	public void doCheck() {
+		check(null == name || 100 >= name.length(), "用户名过长");
+	}
 }

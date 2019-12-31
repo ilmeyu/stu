@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8080
 dubbo:
   application:
     name: stu
@@ -10,3 +10,5 @@ dubbo:
     port: 20880
   registry:
     address: zookeeper://106.15.179.204:2181
+  consumer:
+    version: local

@@ -27,6 +27,8 @@ pipeline {
                  sh "docker push registry.cn-shanghai.aliyuncs.com/ilme/stu:1.0"
                  // 清除本地镜像
                  sh "docker rmi registry.cn-shanghai.aliyuncs.com/ilme/stu:1.0"
+                 // 远程执行应用重启脚本
+                 sh "ssh -i /Users/ilem/dev/101.133.168.248_SH003.pem root@101.133.168.248 ./stu.sh"
              }
          }
 
