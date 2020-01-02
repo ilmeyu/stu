@@ -8,6 +8,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.ilem.dto.common.Input;
 import com.ilem.dto.common.RestResponse;
 import com.ilem.exception.InvalidArgRestException;
+import com.ilem.exception.RpcException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -66,6 +67,10 @@ public class Aop {
 		// 执行目标API
 		try {
 			proceed = joinPoint.proceed();
+		} catch (RpcException ex) {
+			log.error("RPC业务异常: {}", ex.getMessage());
+			// 返回错误信息
+			return RestResponse.fail(ex.getMessage());
 		} catch (Throwable ex) {
 			// 全局异常处理
 			log.error("服务器异常: {}", ex.getMessage());
