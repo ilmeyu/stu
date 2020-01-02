@@ -27,6 +27,7 @@ public class UserListRestIn extends RestPageRequest {
 
 	@Override
 	public void doCheck() {
+		super.doCheck();
 		check(null == name || 100 >= name.length(), "用户名过长");
 	}
 }

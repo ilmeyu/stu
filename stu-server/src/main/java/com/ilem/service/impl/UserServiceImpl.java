@@ -2,11 +2,13 @@ package com.ilem.service.impl;
 
 import com.ilem.converter.UserConverter;
 import com.ilem.domain.AuthUser;
-import com.ilem.dto.input.UserAddRestIn;
-import com.ilem.dto.input.UserListRestIn;
+import com.ilem.dto.input.*;
 import com.ilem.dto.input.user.AuthUserAddRpcIn;
-import com.ilem.dto.input.user.AuthUserListRpcIn;
+import com.ilem.dto.input.user.AuthUserDeleteRpcIn;
+import com.ilem.dto.input.user.AuthUserQueryRpcIn;
+import com.ilem.dto.input.user.AuthUserUpdateRpcIn;
 import com.ilem.dto.output.UserRestOut;
+import com.ilem.exception.RestException;
 import com.ilem.server.AuthUserService;
 import com.ilem.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +36,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserRestOut> list(UserListRestIn rest) {
-		AuthUserListRpcIn userListRpcIn = userConverter.userListRest2Rpc(rest);
+		AuthUserQueryRpcIn userListRpcIn = userConverter.userListRest2Rpc(rest);
 
 		List<AuthUser> authUsers = authUserService.queryUserList(userListRpcIn);
 
@@ -59,6 +61,35 @@ public class UserServiceImpl implements UserService {
 			throw new RuntimeException();
 		}
 
+		return Boolean.TRUE;
+	}
+
+	@Override
+	public Boolean del(UserDelRestIn rest) {
+		AuthUserDeleteRpcIn userDelRpcIn = userConverter.userDelRest2Rpc(rest);
+		Integer result = authUserService.userDelete(userDelRpcIn);
+
+		if (null == result || 0 == result) {
+			throw new RestException("用户删除失败！用户该用户似乎不存在！");
+		}
+		return Boolean.TRUE;
+	}
+
+	@Override
+	public UserRestOut query(UserQueryById rest) {
+		AuthUserQueryRpcIn userQueryRpcIn = userConverter.userQueryRest2Rpc(rest);
+		AuthUser userRpcOut = authUserService.userSingleQuery(userQueryRpcIn);
+		return userConverter.userQueryRpc2Rest(userRpcOut);
+	}
+
+	@Override
+	public Boolean update(UserUpdateById rest) {
+		AuthUserUpdateRpcIn userUpdateRpcIn = userConverter.userUpdateRest2Rpc(rest);
+		Integer result = authUserService.userUpdate(userUpdateRpcIn);
+
+		if (null == result || 0 == result) {
+			throw new RestException("用户更新失败！用户该用户似乎不存在！");
+		}
 		return Boolean.TRUE;
 	}
 }

@@ -1,8 +1,7 @@
 package com.ilem.controller;
 
 import com.ilem.dto.common.RestResponse;
-import com.ilem.dto.input.UserAddRestIn;
-import com.ilem.dto.input.UserListRestIn;
+import com.ilem.dto.input.*;
 import com.ilem.dto.output.UserRestOut;
 import com.ilem.service.UserService;
 import io.swagger.annotations.Api;
@@ -35,5 +34,23 @@ public class UserController {
 	@PostMapping(value = "/add")
 	public RestResponse<Boolean> add(@RequestBody UserAddRestIn request) {
 		return RestResponse.ok(userService.add(request));
+	}
+
+	@ApiOperation(value = "通过id删除用户")
+	@PostMapping(value = "/delById")
+	public RestResponse<Boolean> add(@RequestBody UserDelRestIn request) {
+		return RestResponse.ok(userService.del(request));
+	}
+
+	@ApiOperation(value = "通过id查询用户")
+	@PostMapping(value = "/QueryById")
+	public RestResponse<UserRestOut> add(@RequestBody UserQueryById request) {
+		return RestResponse.ok(userService.query(request));
+	}
+
+	@ApiOperation(value = "通过id更新用户")
+	@PostMapping(value = "/updateById")
+	public RestResponse<Boolean> add(@RequestBody UserUpdateById request) {
+		return RestResponse.ok(userService.update(request));
 	}
 }

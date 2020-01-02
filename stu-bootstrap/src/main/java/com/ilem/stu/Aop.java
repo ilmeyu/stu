@@ -5,9 +5,10 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.ilem.dto.common.Input;
+import com.ilem.dto.common.RestInput;
 import com.ilem.dto.common.RestResponse;
 import com.ilem.exception.InvalidArgRestException;
+import com.ilem.exception.RestException;
 import com.ilem.exception.RpcException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -54,9 +55,9 @@ public class Aop {
 			e.printStackTrace();
 		}
 		// 入参合法性检查
-		if (arg instanceof Input) {
+		if (arg instanceof RestInput) {
 			try {
-				((Input) arg).doCheck();
+				((RestInput) arg).doCheck();
 			} catch (InvalidArgRestException ex) {
 				log.error("参数非法异常: {}", ex.getMessage());
 				// 返回错误信息
@@ -67,6 +68,10 @@ public class Aop {
 		// 执行目标API
 		try {
 			proceed = joinPoint.proceed();
+		} catch (RestException ex) {
+			log.error("REST业务异常: {}", ex.getMessage());
+			// 返回错误信息
+			return RestResponse.fail(ex.getMessage());
 		} catch (RpcException ex) {
 			log.error("RPC业务异常: {}", ex.getMessage());
 			// 返回错误信息
