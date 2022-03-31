@@ -31,7 +31,7 @@
 		<dubbo-starter.version>2.7.3</dubbo-starter.version>
 		<curator-recipes.version>4.2.0</curator-recipes.version>
 		<mapstruct.version>1.3.0.Final</mapstruct.version>
-		<spring-mvc.version>2.2.0.RELEASE</spring-mvc.version>
+		<spring-mvc.version>2.5.12</spring-mvc.version>
 		<spring-aop.version>2.2.0.RELEASE</spring-aop.version>
 	</properties>
 	
