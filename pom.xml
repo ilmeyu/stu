@@ -26,7 +26,7 @@
 	
 	<properties>
 		<java.version>1.8</java.version>
-		<springfox.version>2.9.2</springfox.version>
+		<springfox.version>2.10.0</springfox.version>
 		<center.version>1.0.0-SNAPSHOT</center.version>
 		<dubbo-starter.version>2.7.3</dubbo-starter.version>
 		<curator-recipes.version>4.2.0</curator-recipes.version>
